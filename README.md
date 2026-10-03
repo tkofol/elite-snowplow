@@ -14,7 +14,7 @@ Preview locally: `python3 -m http.server` then open http://localhost:8000.
 
 ## Deploy to GitHub Pages
 
-1. Push this folder to a GitHub repo (e.g. `elite-snowplow`) on the `main` branch.
+1. Repo: https://github.com/tkofol/elite-snowplow (Pages is already enabled; steps kept for reference).
 2. Repo **Settings → Pages**: Source = *Deploy from a branch*, Branch = `main`, folder = `/ (root)`.
 3. Under **Custom domain**, enter `elitesnowservices.com` (matches the `CNAME` file) and save.
 4. Once DNS is verified and the certificate is issued, tick **Enforce HTTPS**.
@@ -33,10 +33,17 @@ In Cloudflare → the `elitesnowservices.com` zone → **DNS → Records**, add:
 | AAAA  | `@`   | `2606:50c0:8001::153`     | DNS only  |
 | AAAA  | `@`   | `2606:50c0:8002::153`     | DNS only  |
 | AAAA  | `@`   | `2606:50c0:8003::153`     | DNS only  |
-| CNAME | `www` | `<github-username>.github.io` | DNS only  |
+| CNAME | `www` | `tkofol.github.io`          | DNS only  |
 
 Remove any existing A/AAAA/CNAME records for `@` and `www` that point elsewhere.
 
 Leave the records **DNS only (grey cloud)** until GitHub shows the domain as verified and HTTPS is enforced. After that you can switch them to **Proxied (orange cloud)** if you want Cloudflare caching; if you do, set **SSL/TLS → Overview** to **Full (strict)** to avoid redirect loops.
 
 Optional: verify the domain under GitHub **Settings → Pages → Verified domains** (adds a TXT record) to stop anyone else claiming it on GitHub Pages.
+
+## Quote form
+
+The form posts to [FormSubmit](https://formsubmit.co), which emails each request to Gregory.Restivo@yahoo.com. No account needed, but:
+
+1. The **first** submission sends an activation email to that address. Click the link in it; requests aren't delivered until then.
+2. The activation email also gives a random alias string. Swap it in for the email address in the `fetch('https://formsubmit.co/ajax/...')` URL in `index.html` so the address isn't in the form code.
