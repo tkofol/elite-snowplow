@@ -41,6 +41,10 @@ Leave the records **DNS only (grey cloud)** until GitHub shows the domain as ver
 
 Optional: verify the domain under GitHub **Settings → Pages → Verified domains** (adds a TXT record) to stop anyone else claiming it on GitHub Pages.
 
+## Email
+
+`info@elitesnowservices.com` forwards to Gregory.Restivo@yahoo.com via Cloudflare Email Routing (receive only; replies go out from Yahoo). This is the address shown on the site.
+
 ## Quote form
 
 The form posts to [FormSubmit](https://formsubmit.co), which emails each request to Gregory.Restivo@yahoo.com. No account needed, but:
